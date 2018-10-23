@@ -11,8 +11,11 @@ APPIMAGETOOL_APPDIR=appdirs/appimagetool.AppDir
 
 rm -rf "$APPIMAGETOOL_APPDIR" || true
 
+# Run make install only for the 'appimagetool.AppImage' component to deploy appimagetools files to
+# the $APPIMAGETOOL_APPDIR
 DESTDIR="$APPIMAGETOOL_APPDIR" cmake -DCOMPONENT=appimagetool.AppImage -P cmake_install.cmake
 
+# Copy AppDir specific files
 cp ../resources/AppRun "$APPIMAGETOOL_APPDIR"
 cp ../resources/appimagetool.desktop "$APPIMAGETOOL_APPDIR"
 cp ../resources/appimagetool.svg "$APPIMAGETOOL_APPDIR"/appimagetool.svg
